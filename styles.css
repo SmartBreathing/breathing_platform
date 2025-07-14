@@ -1,0 +1,225 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.5;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.privacy-note {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
+}
+
+h1, h2, h3 {
+    margin: 10px 0;
+}
+
+p {
+    margin: 10px 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    align-items: stretch;
+}
+
+section > h2 {
+    flex-basis: 100%;
+}
+
+section > p {
+    flex-basis: 100%;
+}
+
+section video {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+section .sessions {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.session {
+    border: 1px solid #eee;
+    padding: 5px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto;
+    row-gap: 10px;
+    column-gap: 0;
+}
+
+.session h3 {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    margin: 0;
+}
+
+.session .recording-indicator {
+    grid-column: 4 / 5;
+    grid-row: 1;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    animation: blink 1s infinite;
+    justify-self: end;
+    align-self: center;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.session .record {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.session .stop-record {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.session .rerecord {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.session .download {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.session .audio-player {
+    grid-column: 1 / 5;
+    grid-row: 3;
+    margin: 0;
+}
+
+.session button:not(:last-of-type) {
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #4681f4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+audio {
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    section video {
+        flex-basis: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    section .sessions {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .session {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto auto auto;
+    }
+
+    .session h3 {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .session .recording-indicator {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: center;
+    }
+
+    .session .record {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .session .stop-record {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    .session .rerecord {
+        grid-column: 1;
+        grid-row: 5;
+    }
+
+    .session .download {
+        grid-column: 1;
+        grid-row: 6;
+    }
+
+    .session .audio-player {
+        grid-column: 1;
+        grid-row: 7;
+    }
+
+    .session button:not(:last-of-type) {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+    

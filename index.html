@@ -1,0 +1,113 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathing Techniques Recording Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Breathing Techniques Recording Platform</h1>
+        <p>A minimalist interface for recording sessions of evidence-based breathing exercises.</p>
+        <p class="privacy-note">This application accesses your microphone for recording purposes. All recordings are processed and stored locally on your device. No data is transmitted to external servers.</p>
+    </header>
+    
+    <main>
+        <section id="technique-1">
+            <h2>Technique 1: 4-2-4 Breathing</h2>
+            <p>Inhale for 4 seconds, hold for 2 seconds, exhale for 4 seconds. Repeat as instructed.</p>
+            <video controls>
+                <source src="video/424_rus.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="sessions">
+                <div class="session">
+                    <h3>Session 1</h3>
+                    <div class="recording-indicator" data-technique="1" data-session="1" style="display: none;"></div>
+                    <button class="record" data-technique="1" data-session="1">Start Recording</button>
+                    <button class="stop-record" data-technique="1" data-session="1" disabled>Stop Recording</button>
+                    <button class="rerecord" data-technique="1" data-session="1" disabled>Rerecord</button>
+                    <button class="download" data-technique="1" data-session="1" disabled>Download</button>
+                    <audio controls class="audio-player" data-technique="1" data-session="1"></audio>
+                </div>
+                <div class="session">
+                    <h3>Session 2</h3>
+                    <div class="recording-indicator" data-technique="1" data-session="2" style="display: none;"></div>
+                    <button class="record" data-technique="1" data-session="2">Start Recording</button>
+                    <button class="stop-record" data-technique="1" data-session="2" disabled>Stop Recording</button>
+                    <button class="rerecord" data-technique="1" data-session="2" disabled>Rerecord</button>
+                    <button class="download" data-technique="1" data-session="2" disabled>Download</button>
+                    <audio controls class="audio-player" data-technique="1" data-session="2"></audio>
+                </div>
+            </div>
+        </section>
+        
+        <section id="technique-2">
+            <h2>Technique 2: 3-3-3-3 Breathing</h2>
+            <p>Inhale for 3 seconds, hold for 3 seconds, exhale for 3 seconds, hold for 3 seconds. Repeat as instructed.</p>
+            <video controls>
+                <source src="video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="sessions">
+                <div class="session">
+                    <h3>Session 1</h3>
+                    <div class="recording-indicator" data-technique="2" data-session="1" style="display: none;"></div>
+                    <button class="record" data-technique="2" data-session="1">Start Recording</button>
+                    <button class="stop-record" data-technique="2" data-session="1" disabled>Stop Recording</button>
+                    <button class="rerecord" data-technique="2" data-session="1" disabled>Rerecord</button>
+                    <button class="download" data-technique="2" data-session="1" disabled>Download</button>
+                    <audio controls class="audio-player" data-technique="2" data-session="1"></audio>
+                </div>
+                <div class="session">
+                    <h3>Session 2</h3>
+                    <div class="recording-indicator" data-technique="2" data-session="2" style="display: none;"></div>
+                    <button class="record" data-technique="2" data-session="2">Start Recording</button>
+                    <button class="stop-record" data-technique="2" data-session="2" disabled>Stop Recording</button>
+                    <button class="rerecord" data-technique="2" data-session="2" disabled>Rerecord</button>
+                    <button class="download" data-technique="2" data-session="2" disabled>Download</button>
+                    <audio controls class="audio-player" data-technique="2" data-session="2"></audio>
+                </div>
+            </div>
+        </section>
+        
+        <section id="technique-3">
+            <h2>Technique 3: 5-5 Breathing</h2>
+            <p>Inhale for 5 seconds, exhale for 5 seconds. Repeat as instructed.</p>
+            <video controls>
+                <source src="video3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="sessions">
+                <div class="session">
+                    <h3>Session 1</h3>
+                    <div class="recording-indicator" data-technique="3" data-session="1" style="display: none;"></div>
+                    <button class="record" data-technique="3" data-session="1">Start Recording</button>
+                    <button class="stop-record" data-technique="3" data-session="1" disabled>Stop Recording</button>
+                    <button class="rerecord" data-technique="3" data-session="1" disabled>Rerecord</button>
+                    <button class="download" data-technique="3" data-session="1" disabled>Download</button>
+                    <audio controls class="audio-player" data-technique="3" data-session="1"></audio>
+                </div>
+                <div class="session">
+                    <h3>Session 2</h3>
+                    <div class="recording-indicator" data-technique="3" data-session="2" style="display: none;"></div>
+                    <button class="record" data-technique="3" data-session="2">Start Recording</button>
+                    <button class="stop-record" data-technique="3" data-session="2" disabled>Stop Recording</button>
+                    <button class="rerecord" data-technique="3" data-session="2" disabled>Rerecord</button>
+                    <button class="download" data-technique="3" data-session="2" disabled>Download</button>
+                    <audio controls class="audio-player" data-technique="3" data-session="2"></audio>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <button id="download-archive" disabled>Download Archive</button>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
