@@ -8,6 +8,25 @@ let recordings = {
 let mediaRecorders = {};
 let audioChunks = {};
 
+function getKazakhstanTimestamp() {
+    const now = new Date();
+    const options = {
+        timeZone: 'Asia/Almaty',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
+    const formatter = new Intl.DateTimeFormat('en-US', options);
+    const parts = formatter.formatToParts(now);
+    const date = `${parts.find(p => p.type === 'year').value}-${parts.find(p => p.type === 'month').value}-${parts.find(p => p.type === 'day').value}`;
+    const time = `${parts.find(p => p.type === 'hour').value}-${parts.find(p => p.type === 'minute').value}-${parts.find(p => p.type === 'second').value}`;
+    return { date, time };
+}
+
 function writeString(view, offset, string) {
     for (let i = 0; i < string.length; i++) {
         view.setUint8(offset + i, string.charCodeAt(i));
@@ -77,7 +96,8 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                     const audioUrl = URL.createObjectURL(wavBlob);
                     const audioPlayer = document.querySelector(`.audio-player[data-technique="${technique}"][data-session="${session}"]`);
                     audioPlayer.src = audioUrl;
-                    recordings[technique][session] = wavBlob;
+                    const { date, time } = getKazakhstanTimestamp();
+                    recordings[technique][session] = { blob: wavBlob, date, time };
 
                     const indicator = document.querySelector(`.recording-indicator[data-technique="${technique}"][data-session="${session}"]`);
                     indicator.style.display = 'none';
@@ -133,12 +153,13 @@ navigator.mediaDevices.getUserMedia({ audio: true })
             button.addEventListener('click', () => {
                 const technique = button.dataset.technique;
                 const session = button.dataset.session;
-                const blob = recordings[technique][session];
-                if (blob) {
-                    const url = URL.createObjectURL(blob);
+                const rec = recordings[technique][session];
+                if (rec) {
+                    const deviceId = localStorage.getItem('deviceId');
+                    const url = URL.createObjectURL(rec.blob);
                     const a = document.createElement('a');
                     a.href = url;
-                    a.download = `technique${technique}_session${session}.wav`;
+                    a.download = `${deviceId}_technique${technique}_session${session}_${rec.date}_${rec.time}.wav`;
                     a.click();
                     URL.revokeObjectURL(url);
                 }
@@ -156,12 +177,14 @@ function checkAllRecordings() {
 
 document.getElementById('download-archive').addEventListener('click', () => {
     const zip = new JSZip();
+    const deviceId = localStorage.getItem('deviceId');
+    const { date, time } = getKazakhstanTimestamp();
     
     Object.keys(recordings).forEach(technique => {
         Object.keys(recordings[technique]).forEach(session => {
-            const blob = recordings[technique][session];
-            if (blob) {
-                zip.file(`technique${technique}_session${session}.wav`, blob);
+            const rec = recordings[technique][session];
+            if (rec) {
+                zip.file(`${deviceId}_technique${technique}_session${session}_${rec.date}_${rec.time}.wav`, rec.blob);
             }
         });
     });
@@ -170,8 +193,33 @@ document.getElementById('download-archive').addEventListener('click', () => {
         const url = URL.createObjectURL(content);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'breathing_sessions.zip';
+        a.download = `${deviceId}_breathing_sessions_${date}_${time}.zip`;
         a.click();
         URL.revokeObjectURL(url);
+    });
+});
+
+// Generate and display shortened unique device ID
+function generateUniqueId() {
+    let deviceId = localStorage.getItem('deviceId');
+    if (!deviceId) {
+        deviceId = crypto.randomUUID().substring(0, 8); // Shortened to 8 characters
+        localStorage.setItem('deviceId', deviceId);
+    } else if (deviceId.length > 8) {
+        deviceId = deviceId.substring(0, 8);
+        localStorage.setItem('deviceId', deviceId);
+    }
+    document.getElementById('unique-id').textContent = deviceId;
+}
+
+generateUniqueId();
+
+// Copy ID to clipboard
+document.getElementById('copy-id').addEventListener('click', () => {
+    const idText = document.getElementById('unique-id').textContent;
+    navigator.clipboard.writeText(idText).then(() => {
+        alert('ID скопирован в буфер обмена!');
+    }).catch(err => {
+        console.error('Ошибка копирования:', err);
     });
 });
