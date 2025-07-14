@@ -10,15 +10,29 @@
 </head>
 <body>
     <header>
-        <h1>Breathing Techniques Recording Platform</h1>
-        <p>A minimalist interface for recording sessions of evidence-based breathing exercises.</p>
-        <p class="privacy-note">This application accesses your microphone for recording purposes. All recordings are processed and stored locally on your device. No data is transmitted to external servers.</p>
+        <h2>Breathing Techniques Recording Platform</h2>
+        <p>Добро пожаловать! 
+        Эта платформа предназначена для участников исследования по дыхательным техникам. 
+        Вы сможете записать сессии дыхания в удобное время, следуя видеоинструкциям. 
+        Участие помогает в изучении эффектов дыхательных практик на стресс и благополучие. 
+        Перед началом ознакомьтесь с инструкциями и предупреждениями.</p>
+        <p class="privacy-note">
+            Эта платформа использует ваш микрофон для записи. Все данные хранятся локально на вашем устройстве и не передаются на внешние серверы.
+            <br>
+            Если во время практики возникнет дискомфорт (головокружение, одышка), немедленно остановитесь. 
+            <br>
+            Рекомендуем начинать с коротких сессий и практиковать в тихой, комфортной обстановке.
+        </p>
     </header>
     
     <main>
         <section id="technique-1">
-            <h2>Technique 1: 4-2-4 Breathing</h2>
-            <p>Inhale for 4 seconds, hold for 2 seconds, exhale for 4 seconds. Repeat as instructed.</p>
+            <h2>Техника 1: 4-2-4 Breathing</h2>
+            <p>Вдохните через нос на 4 секунды, начиная с живота.
+                Задержите дыхание на 2 секунды.
+                Выдохните через рот или нос на 4 секунды.
+                <br>
+                Повторяйте по видеоинструкции. Запишите 2 сессии для точного сбора данных.</p>
             <video controls>
                 <source src="video/424_rus.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -46,10 +60,10 @@
         </section>
         
         <section id="technique-2">
-            <h2>Technique 2: 3-3-3-3 Breathing</h2>
+            <h2>Техника 2: 3-3-3-3 Breathing</h2>
             <p>Inhale for 3 seconds, hold for 3 seconds, exhale for 3 seconds, hold for 3 seconds. Repeat as instructed.</p>
             <video controls>
-                <source src="video2.mp4" type="video/mp4">
+                <source src="video/3333_rus.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="sessions">
@@ -75,10 +89,10 @@
         </section>
         
         <section id="technique-3">
-            <h2>Technique 3: 5-5 Breathing</h2>
+            <h2>Техника 3: 5-5 Breathing</h2>
             <p>Inhale for 5 seconds, exhale for 5 seconds. Repeat as instructed.</p>
             <video controls>
-                <source src="video3.mp4" type="video/mp4">
+                <source src="video/55_rus.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="sessions">
@@ -106,6 +120,11 @@
     
     <footer>
         <button id="download-archive" disabled>Download Archive</button>
+        <p class=""> <strong>Спасибо за участие!</strong> 
+            <br>
+            Ваши данные помогут в научных исследованиях. Если возникнут вопросы, свяжитесь с нами по 38565@iitu.edu.kz. 
+            <br>
+            Для лучших результатов практикуйте регулярно в тихой обстановке</p>
     </footer>
     
     <script src="script.js"></script>
