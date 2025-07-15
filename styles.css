@@ -6,12 +6,12 @@ body {
     background-color: #f8f8f8;
     color: #333;
     line-height: 1.5;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 header {
     text-align: center;
-    padding: 18px;
+    padding: 16px;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
 }
