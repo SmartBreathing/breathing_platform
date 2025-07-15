@@ -130,10 +130,10 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                     let timeLeft = 60;
                     const timerElement = document.getElementById(`timer-${technique}-${session}`);
                     timerElement.style.display = 'block';
-                    timerElement.textContent = `Time left: ${timeLeft}s`;
+                    timerElement.textContent = `Осталось: ${timeLeft} сек`;
                     timerIntervals[key] = setInterval(() => {
                         timeLeft--;
-                        timerElement.textContent = `Time left: ${timeLeft}s`;
+                        timerElement.textContent = `Осталось: ${timeLeft} сек`;
                         if (timeLeft <= 0) {
                             clearInterval(timerIntervals[key]);
                             delete timerIntervals[key];

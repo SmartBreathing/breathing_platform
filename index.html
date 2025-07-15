@@ -12,119 +12,149 @@
     <header>
         <h1>Breathing Techniques Recording Platform</h1>
         <p>Добро пожаловать! 
-        Эта платформа предназначена для участников исследования по дыхательным техникам. 
-        Вы сможете записать сессии дыхания в удобное время, следуя видеоинструкциям. 
-        Участие помогает в изучении эффектов дыхательных практик на стресс и благополучие. 
-        Перед началом ознакомьтесь с инструкциями и предупреждениями.
+        Данная платформа предназначена для самостоятельной записи дыхательных сессий участниками исследования. 
+        <br>
+        Пожалуйста, выберите тихое помещение и сядьте удобно, избегая посторонних звуков и движений. 
+        Устройство (смартфон или компьютер) должно находиться перед вами на устойчивой поверхности, на расстоянии примерно 10-20 см от рта.
+        <br>
+        Если ваше дыхание плохо фиксируется (например, слишком тихий звук), допустимо приблизить микрофон на расстояние до 2-5 см.
+        <br>
+        Следуйте инструкциям на экране: выполните дыхательные упражнения в заданной последовательности и запишите каждую сессию.
+        <br>
+        Для каждой дыхательной сессии нажмите кнопку <strong>«Начать»</strong>, затем следуйте инструкции на экране. По завершении нажмите <strong>«Остановить»</strong>, чтобы сохранить файл.
+        <br>
+        Вы можете <strong>прослушать запись</strong>, чтобы убедиться, что дыхание слышно. При необходимости - перезапишите сессию.
+        <br>
+        После записи всех сессий нажмите <strong>«Скачать архив»</strong> и перейдите к анкете.
+        <br>
+        Вся процедура займёт не более 10-15 минут.
+        <br>        
         </p>
-        <p class="privacy-note">Эта платформа использует ваш микрофон для записи. Все данные хранятся локально на вашем устройстве и не передаются на внешние серверы.
+        <p class="privacy-note">Все данные сохраняются только на вашем устройстве. 
+            Вы самостоятельно загружаете архив с записями и даёте согласие на участие через форму.
             <br>
-            Если во время практики возникнет дискомфорт (головокружение, одышка), немедленно остановитесь. 
-            <br>
-            Рекомендуем начинать с коротких сессий и практиковать в тихой, комфортной обстановке.
+            Если во время практики появится дискомфорт, пожалуйста, остановитесь.
         </p>
     </header>
     
     <main>
         <section id="baseline">
-            <h2>Baseline: Natural Breathing</h2>
-            <p>Запишите 1 минуту вашего обычного дыхания без техник. Эта запись нужна для научного сравнения.</p>
+            <h2>Baseline: Обычное дыхание</h2>
+            <p>Пожалуйста, запишите 1 минуту вашего обычного дыхания без применения дыхательных техник. Это необходимо для научного сравнения с записями, сделанными по инструкциям.
+            <br>
+            Старайтесь дышать спокойно и естественно через нос, не фокусируясь на контроле вдоха и выдоха. Не разговаривайте во время записи. После завершения прослушайте запись и убедитесь, что дыхание хорошо различимо.
+            </p>
             <div class="sessions">
                 <div class="session">
-                    <h3>Session 1</h3>
+                    <h3>Сессия 1</h3>
                     <div class="recording-indicator" data-technique="0" data-session="1" style="display: none;"></div>
-                    <button class="record" data-technique="0" data-session="1">Start Recording</button>
-                    <button class="stop-record" data-technique="0" data-session="1" disabled>Stop Recording</button>
-                    <button class="rerecord" data-technique="0" data-session="1" disabled>Rerecord</button>
-                    <button class="download" data-technique="0" data-session="1" disabled>Download</button>
-                    <p id="timer-0-1" style="display: none; text-align: center; font-weight: bold;">Time left: 60s</p>
+                    <button class="record" data-technique="0" data-session="1">Начать</button>
+                    <button class="stop-record" data-technique="0" data-session="1" disabled>Остановить</button>
+                    <button class="rerecord" data-technique="0" data-session="1" disabled>Перезаписать</button>
+                    <button class="download" data-technique="0" data-session="1" disabled>Скачать</button>
+                    <p id="timer-0-1" style="display: none; text-align: center; font-weight: bold;">Время: 60сек</p>
                     <audio controls class="audio-player" data-technique="0" data-session="1"></audio>
                 </div>
             </div>
         </section>
         
         <section id="technique-1">
-            <h2>Technique 1: 4-2-4 Breathing</h2>
-            <p>Inhale for 4 seconds, hold for 2 seconds, exhale for 4 seconds. Repeat as instructed.</p>
+            <h2>Техника 1: 4-2-4 дыхание</h2>
+            <p> Во время этой сессии вы будете дышать по следующему ритму: вдох через нос - 4 секунды, пауза - 2 секунды, выдох через рот - 4 секунды. Повторяйте этот цикл в течение всей минуты.
+            <br>
+            Следуйте видеоинструкции. Поддерживайте ровный темп, без избыточного напряжения.
+            <br>
+            После окончания записи прослушайте файл и убедитесь, что дыхание различимо. При необходимости вы можете перезаписать сессию.
+            </p>
             <video controls>
                 <source src="video/424_rus.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="sessions">
                 <div class="session">
-                    <h3>Session 1</h3>
+                    <h3>Сессия 1</h3>
                     <div class="recording-indicator" data-technique="1" data-session="1" style="display: none;"></div>
-                    <button class="record" data-technique="1" data-session="1">Start Recording</button>
-                    <button class="stop-record" data-technique="1" data-session="1" disabled>Stop Recording</button>
-                    <button class="rerecord" data-technique="1" data-session="1" disabled>Rerecord</button>
-                    <button class="download" data-technique="1" data-session="1" disabled>Download</button>
+                    <button class="record" data-technique="1" data-session="1">Начать</button>
+                    <button class="stop-record" data-technique="1" data-session="1" disabled>Остановить</button>
+                    <button class="rerecord" data-technique="1" data-session="1" disabled>Перезаписать</button>
+                    <button class="download" data-technique="1" data-session="1" disabled>Скачать</button>
                     <audio controls class="audio-player" data-technique="1" data-session="1"></audio>
                 </div>
                 <div class="session">
-                    <h3>Session 2</h3>
+                    <h3>Сессия 2</h3>
                     <div class="recording-indicator" data-technique="1" data-session="2" style="display: none;"></div>
-                    <button class="record" data-technique="1" data-session="2">Start Recording</button>
-                    <button class="stop-record" data-technique="1" data-session="2" disabled>Stop Recording</button>
-                    <button class="rerecord" data-technique="1" data-session="2" disabled>Rerecord</button>
-                    <button class="download" data-technique="1" data-session="2" disabled>Download</button>
+                    <button class="record" data-technique="1" data-session="2">Начать</button>
+                    <button class="stop-record" data-technique="1" data-session="2" disabled>Остановить</button>
+                    <button class="rerecord" data-technique="1" data-session="2" disabled>Перезаписать</button>
+                    <button class="download" data-technique="1" data-session="2" disabled>Скачать</button>
                     <audio controls class="audio-player" data-technique="1" data-session="2"></audio>
                 </div>
             </div>
         </section>
         
         <section id="technique-2">
-            <h2>Technique 2: 3-3-3-3 Breathing</h2>
-            <p>Inhale for 3 seconds, hold for 3 seconds, exhale for 3 seconds, hold for 3 seconds. Repeat as instructed.</p>
+            <h2>Техника 2: 3-3-3-3 дыхание</h2>
+            <p> Во время этой сессии используйте следующий ритм дыхания: вдох через нос - 3 секунды, пауза - 3 секунды, выдох через рот - 3 секунды, пауза - 3 секунды. Продолжайте этот цикл в течение одной минуты.
+            <br>
+            Старайтесь сохранять спокойный темп дыхания, не перенапрягайтесь. Дышите  или рот, ориентируйтесь на видео.
+            <br>
+            После завершения прослушайте запись и, при необходимости, перезапишите сессию, если дыхание неразличимо. 
+            </p>
             <video controls>
                 <source src="video/3333_rus.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="sessions">
                 <div class="session">
-                    <h3>Session 1</h3>
+                    <h3>Сессия 1</h3>
                     <div class="recording-indicator" data-technique="2" data-session="1" style="display: none;"></div>
-                    <button class="record" data-technique="2" data-session="1">Start Recording</button>
-                    <button class="stop-record" data-technique="2" data-session="1" disabled>Stop Recording</button>
-                    <button class="rerecord" data-technique="2" data-session="1" disabled>Rerecord</button>
-                    <button class="download" data-technique="2" data-session="1" disabled>Download</button>
+                    <button class="record" data-technique="2" data-session="1">Начать</button>
+                    <button class="stop-record" data-technique="2" data-session="1" disabled>Остановить</button>
+                    <button class="rerecord" data-technique="2" data-session="1" disabled>Перезаписать</button>
+                    <button class="download" data-technique="2" data-session="1" disabled>Скачать</button>
                     <audio controls class="audio-player" data-technique="2" data-session="1"></audio>
                 </div>
                 <div class="session">
-                    <h3>Session 2</h3>
+                    <h3>Сессия 2</h3>
                     <div class="recording-indicator" data-technique="2" data-session="2" style="display: none;"></div>
-                    <button class="record" data-technique="2" data-session="2">Start Recording</button>
-                    <button class="stop-record" data-technique="2" data-session="2" disabled>Stop Recording</button>
-                    <button class="rerecord" data-technique="2" data-session="2" disabled>Rerecord</button>
-                    <button class="download" data-technique="2" data-session="2" disabled>Download</button>
+                    <button class="record" data-technique="2" data-session="2">Начать</button>
+                    <button class="stop-record" data-technique="2" data-session="2" disabled>Остановить</button>
+                    <button class="rerecord" data-technique="2" data-session="2" disabled>Перезаписать</button>
+                    <button class="download" data-technique="2" data-session="2" disabled>Скачать</button>
                     <audio controls class="audio-player" data-technique="2" data-session="2"></audio>
                 </div>
             </div>
         </section>
         
         <section id="technique-3">
-            <h2>Technique 3: 5-5 Breathing</h2>
-            <p>Inhale for 5 seconds, exhale for 5 seconds. Repeat as instructed.</p>
+            <h2>Техника 3: 5-5 дыхание</h2>
+            <p>Во время этой сессии дышите в ритме: вдох - 5 секунд, выдох - 5 секунд. Без дополнительных пауз. Продолжайте такой цикл в течение одной минуты.
+            <br>
+            Сохраняйте ровный и комфортный темп, дышите через нос. Не задерживайте дыхание и не форсируйте выдох. Следуйте видеоинструкции на экране.
+            <br>
+            По завершении записи прослушайте файл и при необходимости перезапишите сессию.
+            </p>
             <video controls>
                 <source src="video/55_rus.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="sessions">
                 <div class="session">
-                    <h3>Session 1</h3>
+                    <h3>Сессия 1</h3>
                     <div class="recording-indicator" data-technique="3" data-session="1" style="display: none;"></div>
-                    <button class="record" data-technique="3" data-session="1">Start Recording</button>
-                    <button class="stop-record" data-technique="3" data-session="1" disabled>Stop Recording</button>
-                    <button class="rerecord" data-technique="3" data-session="1" disabled>Rerecord</button>
-                    <button class="download" data-technique="3" data-session="1" disabled>Download</button>
+                    <button class="record" data-technique="3" data-session="1">Начать</button>
+                    <button class="stop-record" data-technique="3" data-session="1" disabled>Остановить</button>
+                    <button class="rerecord" data-technique="3" data-session="1" disabled>Перезаписать</button>
+                    <button class="download" data-technique="3" data-session="1" disabled>Скачать</button>
                     <audio controls class="audio-player" data-technique="3" data-session="1"></audio>
                 </div>
                 <div class="session">
-                    <h3>Session 2</h3>
+                    <h3>Сессия 2</h3>
                     <div class="recording-indicator" data-technique="3" data-session="2" style="display: none;"></div>
-                    <button class="record" data-technique="3" data-session="2">Start Recording</button>
-                    <button class="stop-record" data-technique="3" data-session="2" disabled>Stop Recording</button>
-                    <button class="rerecord" data-technique="3" data-session="2" disabled>Rerecord</button>
-                    <button class="download" data-technique="3" data-session="2" disabled>Download</button>
+                    <button class="record" data-technique="3" data-session="2">Начать</button>
+                    <button class="stop-record" data-technique="3" data-session="2" disabled>Остановить</button>
+                    <button class="rerecord" data-technique="3" data-session="2" disabled>Перезаписать</button>
+                    <button class="download" data-technique="3" data-session="2" disabled>Скачать</button>
                     <audio controls class="audio-player" data-technique="3" data-session="2"></audio>
                 </div>
             </div>
@@ -133,11 +163,11 @@
     
     <footer>
         <p>Ваш уникальный ID: <span id="unique-id"></span> <button id="copy-id">Копировать</button></p>
-        <button id="download-archive" disabled>Download Archive</button>
-        <p>После скачивания загрузите файлы в <strong><a href="https://forms.gle/bej84jL9ZfPTgHXP6" target="_blank">форму сбора данных</a>.</strong></p>
+        <button id="download-archive" disabled>Скачать архив</button>
+        <p>После скачивания перейдите по ссылке на форму сбора данных и прикрепите архив: <strong><a href="https://forms.gle/bej84jL9ZfPTgHXP6" target="_blank">форма сбора данных</a>.</strong></p>
         <p><strong>Спасибо за участие!</strong></p>
         <p>Ваши данные помогут в научных исследованиях. Если возникнут вопросы, свяжитесь с нами по <a href="mailto:385565@itu.edu.kz">385565@itu.edu.kz</a>.</p>
-        <p>Для лучших результатов практикуйте регулярно в тихой обстановке</p>
+        <p>Для наилучших результатов рекомендуется выполнять дыхательные упражнения в спокойной обстановке.</p>
     </footer>
     
     <script src="script.js"></script>
