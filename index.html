@@ -15,9 +15,9 @@
         Эта платформа предназначена для участников исследования по дыхательным техникам. 
         Вы сможете записать сессии дыхания в удобное время, следуя видеоинструкциям. 
         Участие помогает в изучении эффектов дыхательных практик на стресс и благополучие. 
-        Перед началом ознакомьтесь с инструкциями и предупреждениями.</p>
-        <p class="privacy-note">
-            Эта платформа использует ваш микрофон для записи. Все данные хранятся локально на вашем устройстве и не передаются на внешние серверы.
+        Перед началом ознакомьтесь с инструкциями и предупреждениями.
+        </p>
+        <p class="privacy-note">Эта платформа использует ваш микрофон для записи. Все данные хранятся локально на вашем устройстве и не передаются на внешние серверы.
             <br>
             Если во время практики возникнет дискомфорт (головокружение, одышка), немедленно остановитесь. 
             <br>
@@ -26,13 +26,26 @@
     </header>
     
     <main>
+        <section id="baseline">
+            <h2>Baseline: Natural Breathing</h2>
+            <p>Запишите 1 минуту вашего обычного дыхания без техник. Эта запись нужна для научного сравнения.</p>
+            <div class="sessions">
+                <div class="session">
+                    <h3>Session 1</h3>
+                    <div class="recording-indicator" data-technique="0" data-session="1" style="display: none;"></div>
+                    <button class="record" data-technique="0" data-session="1">Start Recording</button>
+                    <button class="stop-record" data-technique="0" data-session="1" disabled>Stop Recording</button>
+                    <button class="rerecord" data-technique="0" data-session="1" disabled>Rerecord</button>
+                    <button class="download" data-technique="0" data-session="1" disabled>Download</button>
+                    <p id="timer-0-1" style="display: none; text-align: center; font-weight: bold;">Time left: 60s</p>
+                    <audio controls class="audio-player" data-technique="0" data-session="1"></audio>
+                </div>
+            </div>
+        </section>
+        
         <section id="technique-1">
-            <h2>Техника 1: 4-2-4 Breathing</h2>
-            <p>Вдохните через нос на 4 секунды, начиная с живота.
-                Задержите дыхание на 2 секунды.
-                Выдохните через рот или нос на 4 секунды.
-                <br>
-                Повторяйте по видеоинструкции. Запишите 2 сессии для точного сбора данных.</p>
+            <h2>Technique 1: 4-2-4 Breathing</h2>
+            <p>Inhale for 4 seconds, hold for 2 seconds, exhale for 4 seconds. Repeat as instructed.</p>
             <video controls>
                 <source src="video/424_rus.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -60,7 +73,7 @@
         </section>
         
         <section id="technique-2">
-            <h2>Техника 2: 3-3-3-3 Breathing</h2>
+            <h2>Technique 2: 3-3-3-3 Breathing</h2>
             <p>Inhale for 3 seconds, hold for 3 seconds, exhale for 3 seconds, hold for 3 seconds. Repeat as instructed.</p>
             <video controls>
                 <source src="video/3333_rus.mp4" type="video/mp4">
@@ -89,7 +102,7 @@
         </section>
         
         <section id="technique-3">
-            <h2>Техника 3: 5-5 Breathing</h2>
+            <h2>Technique 3: 5-5 Breathing</h2>
             <p>Inhale for 5 seconds, exhale for 5 seconds. Repeat as instructed.</p>
             <video controls>
                 <source src="video/55_rus.mp4" type="video/mp4">
@@ -119,14 +132,12 @@
     </main>
     
     <footer>
-        <p>Ваш ID: <span id="unique-id"></span> <button id="copy-id">Копировать</button></p>
+        <p>Ваш уникальный ID: <span id="unique-id"></span> <button id="copy-id">Копировать</button></p>
         <button id="download-archive" disabled>Download Archive</button>
-        <p>После скачивания загрузите файлы в <a href="https://forms.gle/bej84jL9ZfPTgHXP6" target="_blank">форму сбора данных</a>.</p>
-        <p class=""> <strong>Спасибо за участие!</strong> 
-            <br>
-            Ваши данные помогут в научных исследованиях. Если возникнут вопросы, свяжитесь с нами по <a href="mailto:38565@iitu.edu.kz">38565@iitu.edu.kz</a>. 
-            <br>
-            Для лучших результатов практикуйте регулярно в тихой обстановке</p>
+        <p>После скачивания загрузите файлы в <strong><a href="https://forms.gle/bej84jL9ZfPTgHXP6" target="_blank">форму сбора данных</a>.</strong></p>
+        <p><strong>Спасибо за участие!</strong></p>
+        <p>Ваши данные помогут в научных исследованиях. Если возникнут вопросы, свяжитесь с нами по <a href="mailto:385565@itu.edu.kz">385565@itu.edu.kz</a>.</p>
+        <p>Для лучших результатов практикуйте регулярно в тихой обстановке</p>
     </footer>
     
     <script src="script.js"></script>

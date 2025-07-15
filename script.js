@@ -1,5 +1,6 @@
 // script.js
 let recordings = {
+    0: {1: null},
     1: {1: null, 2: null},
     2: {1: null, 2: null},
     3: {1: null, 2: null}
@@ -7,6 +8,7 @@ let recordings = {
 
 let mediaRecorders = {};
 let audioChunks = {};
+let timerIntervals = {};
 
 function getKazakhstanTimestamp() {
     const now = new Date();
@@ -97,7 +99,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                     const audioPlayer = document.querySelector(`.audio-player[data-technique="${technique}"][data-session="${session}"]`);
                     audioPlayer.src = audioUrl;
                     const { date, time } = getKazakhstanTimestamp();
-                    recordings[technique][session] = { blob: wavBlob, date, time };
+                    recordings[technique][session] = { blob: wavBlob, date, time, duration: audioBuf.duration };
 
                     const indicator = document.querySelector(`.recording-indicator[data-technique="${technique}"][data-session="${session}"]`);
                     indicator.style.display = 'none';
@@ -105,6 +107,16 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                     document.querySelector(`.download[data-technique="${technique}"][data-session="${session}"]`).disabled = false;
                     document.querySelector(`.rerecord[data-technique="${technique}"][data-session="${session}"]`).disabled = false;
                     checkAllRecordings();
+
+                    // Stop and hide timer if it's baseline
+                    if (technique === '0') {
+                        if (timerIntervals[key]) {
+                            clearInterval(timerIntervals[key]);
+                            delete timerIntervals[key];
+                        }
+                        const timerElement = document.getElementById(`timer-${technique}-${session}`);
+                        timerElement.style.display = 'none';
+                    }
                 });
                 
                 mediaRecorders[key].start();
@@ -112,6 +124,25 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                 document.querySelector(`.stop-record[data-technique="${technique}"][data-session="${session}"]`).disabled = false;
                 const indicator = document.querySelector(`.recording-indicator[data-technique="${technique}"][data-session="${session}"]`);
                 indicator.style.display = 'block';
+
+                // Timer for baseline only
+                if (technique === '0') {
+                    let timeLeft = 60;
+                    const timerElement = document.getElementById(`timer-${technique}-${session}`);
+                    timerElement.style.display = 'block';
+                    timerElement.textContent = `Time left: ${timeLeft}s`;
+                    timerIntervals[key] = setInterval(() => {
+                        timeLeft--;
+                        timerElement.textContent = `Time left: ${timeLeft}s`;
+                        if (timeLeft <= 0) {
+                            clearInterval(timerIntervals[key]);
+                            delete timerIntervals[key];
+                            mediaRecorders[key].stop();
+                            document.querySelector(`.stop-record[data-technique="${technique}"][data-session="${session}"]`).disabled = true;
+                            timerElement.style.display = 'none';
+                        }
+                    }, 1000);
+                }
             });
         });
         
@@ -123,6 +154,16 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                 
                 mediaRecorders[key].stop();
                 button.disabled = true;
+
+                // Stop timer if baseline
+                if (technique === '0') {
+                    if (timerIntervals[key]) {
+                        clearInterval(timerIntervals[key]);
+                        delete timerIntervals[key];
+                    }
+                    const timerElement = document.getElementById(`timer-${technique}-${session}`);
+                    timerElement.style.display = 'none';
+                }
             });
         });
         
@@ -145,6 +186,18 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                 document.querySelector(`.stop-record[data-technique="${technique}"][data-session="${session}"]`).disabled = true;
                 const indicator = document.querySelector(`.recording-indicator[data-technique="${technique}"][data-session="${session}"]`);
                 indicator.style.display = 'none';
+
+                // Reset timer for baseline
+                if (technique === '0') {
+                    if (timerIntervals[key]) {
+                        clearInterval(timerIntervals[key]);
+                        delete timerIntervals[key];
+                    }
+                    const timerElement = document.getElementById(`timer-${technique}-${session}`);
+                    timerElement.style.display = 'none';
+                    timerElement.textContent = `Time left: 60s`;
+                }
+
                 checkAllRecordings();
             });
         });
@@ -180,14 +233,35 @@ document.getElementById('download-archive').addEventListener('click', () => {
     const deviceId = localStorage.getItem('deviceId');
     const { date, time } = getKazakhstanTimestamp();
     
+    // Собираем метаданные для всех сессий
+    const metadata = {
+        userId: deviceId,
+        archiveDate: date,
+        archiveTime: time,
+        sessions: []
+    };
+    
     Object.keys(recordings).forEach(technique => {
         Object.keys(recordings[technique]).forEach(session => {
             const rec = recordings[technique][session];
             if (rec) {
-                zip.file(`${deviceId}_technique${technique}_session${session}_${rec.date}_${rec.time}.wav`, rec.blob);
+                const filename = `${deviceId}_technique${technique}_session${session}_${rec.date}_${rec.time}.wav`;
+                zip.file(filename, rec.blob);
+                metadata.sessions.push({
+                    technique: technique,
+                    session: session,
+                    date: rec.date,
+                    time: rec.time,
+                    duration: rec.duration,
+                    filename: filename
+                });
             }
         });
     });
+    
+    // Добавляем metadata.json в архив
+    const metadataJson = JSON.stringify(metadata, null, 2);
+    zip.file('metadata.json', metadataJson);
     
     zip.generateAsync({type: 'blob'}).then(content => {
         const url = URL.createObjectURL(content);

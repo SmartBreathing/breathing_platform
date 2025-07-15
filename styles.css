@@ -22,6 +22,10 @@ header {
     margin-top: 10px;
 }
 
+h1, h2, h3 {
+    margin: 10px 0;
+}
+
 h1 {
     font-size: 2em;
 }
@@ -34,16 +38,12 @@ h3 {
     font-size: 1.2em;
 }
 
-h1, h2, h3 {
-    margin: 10px 0;
-}
-
 p {
     margin: 10px 0;
 }
 
 main {
-    max-width: 820px;
+    max-width: 860px;
     margin: 20px auto;
     padding: 0 20px;
 }
@@ -145,6 +145,12 @@ section .sessions {
     margin: 0;
 }
 
+.session #timer-0-1 {
+    grid-column: 1 / 5;
+    grid-row: 1;
+    margin: 0;
+}
+
 button {
     padding: 8px 12px;
     background-color: #007bff;
@@ -170,6 +176,15 @@ footer {
     border-top: 1px solid #ddd;
 }
 
+footer p {
+    margin: 5px 0;
+}
+
+#copy-id {
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
 @media (max-width: 768px) {
     section video {
         flex-basis: 100%;
@@ -184,6 +199,26 @@ footer {
 }
 
 @media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    h3 {
+        font-size: 1em;
+    }
+
+    header {
+        padding: 10px;
+    }
+
     .session {
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: auto auto auto auto;
